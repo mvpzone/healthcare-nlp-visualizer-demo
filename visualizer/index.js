@@ -37,7 +37,7 @@ exports.analyzeDocument = async (req, res) => {
   }
 
   const auth = new google.auth.GoogleAuth({
-    keyFile: './key.json',
+    // keyFile: './key.json',
     scopes: ['https://www.googleapis.com/auth/cloud-healthcare'],
   });
 

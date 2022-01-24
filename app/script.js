@@ -138,8 +138,14 @@ function analyse_text() {
   const text = app.input_text;
   console.log('input text: ' + text);
 
+  let viz_url = process.env.VISUALIZER_URL // "239482"
+  if(!Boolean(viz_url)) {
+    console.log('viz_url not available in as env var VISUALIZER_URL')
+    return;
+  }
+
   $.ajax({
-    url: 'https://us-central1 YOUR FUNCTION HERE.cloudfunctions.net/visualizer',
+    url: viz_url, //https://us-central1 YOUR FUNCTION HERE.cloudfunctions.net/visualizer
     type: 'POST',
     data: {'text': text},
     dataType: 'JSON',
@@ -162,7 +168,7 @@ function analyse_text() {
         app.loading = false;
       })
       .fail(function(data) {
-
+        console.log('Failure: ' + data)
       });
 }
 
