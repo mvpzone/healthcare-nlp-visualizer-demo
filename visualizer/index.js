@@ -42,7 +42,7 @@ exports.analyzeDocument = async (req, res) => {
 
   const projectId = await auth.getProjectId();
   const accessToken = await auth.getAccessToken();
-  const url = 'https://healthcare.googleapis.com/v1alpha2/projects/'+ projectId +'/locations/us-central1/services/nlp:analyzeEntities';
+  const url = 'https://healthcare.googleapis.com/v1/projects/'+ projectId +'/locations/us-central1/services/nlp:analyzeEntities';
 
   const response = await fetch(url, {
     method: 'post',
