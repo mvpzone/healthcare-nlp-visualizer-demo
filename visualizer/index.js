@@ -58,7 +58,7 @@ exports.analyzeDocument = async (req, res) => {
 /**
  * Sets up CORS to access in domains.
  */
-handleCors = (req, res) => {
+const handleCors = (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Methods', '*');
   res.set('Access-Control-Allow-Headers', 'Content-Type');
