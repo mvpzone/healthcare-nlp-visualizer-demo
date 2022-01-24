@@ -26,7 +26,6 @@ const fetch = require('node-fetch');
 exports.analyzeDocument = async (req, res) => {
   handleCors(req, res);
 
-  const url = `https://healthcare.googleapis.com/v1alpha2/projects/healthcare-nlp-demo/locations/us-central1/services/nlp:analyzeEntities`;
   let document;
 
   if (!req.body || !req.body.text) {
@@ -41,7 +40,10 @@ exports.analyzeDocument = async (req, res) => {
     scopes: ['https://www.googleapis.com/auth/cloud-healthcare'],
   });
 
+  const projectId = await auth.getProjectId();
   const accessToken = await auth.getAccessToken();
+  const url = 'https://healthcare.googleapis.com/v1alpha2/projects/'+ projectId +'/locations/us-central1/services/nlp:analyzeEntities';
+
   const response = await fetch(url, {
     method: 'post',
     body: JSON.stringify({'document_content': document}),
